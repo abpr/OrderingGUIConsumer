@@ -1,0 +1,3 @@
+﻿http://192.168.1.240:8080/PCatServiceCatalogue/api/Consumer/location&package1
+http://192.168.1.240:8080/PCatServiceCatalogue/api/Consumer/location&package1&package2
+http://192.168.1.240:8080/PCatServiceCatalogue/api/Consumer/location&package1&package2&package3

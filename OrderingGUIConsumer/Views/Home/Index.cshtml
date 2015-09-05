@@ -1,0 +1,663 @@
+﻿<!-- Navigation -->
+@model OrderingGUIConsumer.Models.PortalModel
+
+<nav class="navbar navbar-default navbar-fixed-top" style="background-color:crimson" role="navigation" >
+    <div id="img" style="float:left">
+        <img src="~/images/2015logowhite.png" width="50" height="50" >
+    </div>
+    <div class="container">
+       
+        <div class="navbar-header page-scroll">
+            
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand page-scroll" href="#page-top"><font color="white">Ordering GUI - CMB</font></a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div id="sessionDiv" class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                <li class="hidden">
+                    <a id ="aLinkPageTop" class="page-scroll" href="#page-top"></a>
+                </li>
+                <li id="navServices">
+                    <a id ="aLinkServices" class="page-scroll" href="#service"><font color="white">Services</font></a>
+                </li>
+                <li id="navBundles">
+                    <a id ="aLinkBundles" class="page-scroll" href="#bundles"><font color="white">Bundles</font></a>
+                </li>
+                <li id="navOrderSummary">
+                    <a id ="aLinkOrderSummary" class="page-scroll" href="#orderSummary"><font color="white">Order Summary</font></a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li id="agentName">
+                    <a class="page-scroll"><font color="white">@ViewBag.agentName</font></a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+<!-- CustomerDetails Section -->
+<section id="customerDetails" class="customerDetails-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                @Html.Partial("~/Views/CustomerDetails/Details.cshtml")
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section id="service" class="second-section">
+    @Html.Partial("~/Views/Services/chooseservice.cshtml")
+</section>
+
+
+<!-- Bundles Section -->
+<section id="bundles"  class="service-section">
+    <div id="bundles404">
+      @Html.Partial("~/Views/Bundles/choosebundle.cshtml")
+    </div>
+    <div id="bundlesactive" style="display:none">
+    <div class="container" onload="init()">
+        <div class="row">
+            <div class="col-lg-12">
+             
+
+                <div style="width:auto;">
+                    <div class="col-md-4" id="prod" >
+                        <!-- <div id="products" style="width:50%">
+                 <div>DETAILS</div>
+                 <div id="ProductName"></div>
+                 <div id="Description"></div>
+                 <div id="Price"></div>
+                 <div id="link"></div>
+             </div>-->
+                    </div>
+                    <div class="col-md-4" >
+                        <p id="productname"></p>
+                        <p id="productdesc"></p>
+                        <p id="productrate"></p>
+                        <p id="bundlename"></p>
+                        <p id="bundledesc"></p>
+                        <p id="bundlerate"></p>
+                    </div>
+                    <div class="col-md-4" >
+                        <input type="button" name="ViewOrder" onclick="ViewOrder()" value="View Order">
+                        <div id="shoppingCart">
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+                <div id="confirm">
+                    <input type="button" id="confirmorder" value="Confirm Order" onclick="SendOrderJson()"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+<!-- Order Summary Section -->
+<section id="orderSummary" class="second-section">
+        @Html.Partial("~/Views/Portal/Index.cshtml", @Model)
+</section>
+
+<!-- jQuery -->
+<script src="~/Scripts/jquery.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="~/Scripts/bootstrap.min.js"></script>
+<!-- Scrolling Nav JavaScript -->
+<script src="~/Scripts/jquery.easing.min.js"></script>
+<script src="~/Scripts/scrolling-nav.js"></script>
+
+<script type="text/javascript">
+
+    //$("#sessionDiv").load("Session")
+
+
+    function init() {
+        $("ul").hide();
+        $("#divaddtocart").hide();
+        $("#confirm").hide();
+
+
+    }
+
+
+
+    var ProductsList = [];
+    var BundlesList = [];
+    function OrderForm() {
+        this.lineofbusiness = "cmb";
+        this.customerdetails = new Customerdetails();
+        this.orderdetails = new Orderdetails();
+        this.contractdetails = new Contractdetails();
+    }
+
+    function Customerdetails() {
+        this.customertype = "new";
+        this.customerid = 0;
+        this.fname = $('#bfirst_name').val();
+        this.lname = $('#blast_name').val();
+
+        this.connectionaddress = new Connectionaddress();
+
+        this.billingaddress = new Billingaddress();
+
+        this.email = $('#emailID').val();
+        this.contactnumber = $('#mobile').val();
+        this.dateofbirth = $('#bdob').val();
+    }
+
+    //addresses
+    function Connectionaddress() {
+        this.streetname = $('#bstreet').val();
+        this.zipcode = $('#bzip').val(); 
+        this.city = $('#bcity').val();
+        this.state = $('#bstate').val();
+        this.stateid = $('#bstateid').val();
+        this.country = $('#bcountry').val();
+    }
+    function Billingaddress() {
+        this.streetname = $('#sstreet').val();
+        this.zipcode = $('#szip').val();
+        this.city = $('#scity').val();
+        this.state = $('#sstate').val();
+        this.stateid = $('#sstateid').val();
+        this.country = $('#scountry').val();
+    }
+
+    function Orderdetails() {
+        this.dateofbooking = "28-aug-2015";
+        this.duedate = $('#inputField').val();
+        this.services = new Array();
+        if (ProductsList.length > 0)
+        {
+            for(var i=0; i<ProductsList.length;i++)
+                this.services[i] = new Service(i,1);
+        }
+        else
+        {
+            for (var i = 0; i < BundlesList; i++)
+                this.services[i] = new Service(i,0);
+        }
+
+        //this.services[0] = new Service();
+        //this.services = new Service2();
+    }
+
+    function Service(i, condition) {
+        if (condition == 1)
+        {
+            this.servicecode = ProductsList[i].Product_ID.value;
+            this.servicename = ProductsList[i].Product_Description.value;
+            this.quantity = new Quantity();
+        }
+        else
+        {
+            this.servicecode = BundlesList[i].Bundle_Id.value;
+            this.servicename = BundlesList[i].Bundle_Desc.value;
+            this.quantity = new Quantity();
+        }
+        
+    }
+    //function Service2() {
+    //    this.servicecode = "servicecode2";
+    //    this.servicename = "servicename2";
+    //    this.quantity = new Quantity();
+    //}
+
+    function Quantity() {
+        this.max = 1;
+        this.current = 1;
+    }
+
+    function Contractdetails() {
+        this.contractid = "";
+        this.modeltype = "";
+        this.classofservice = "";
+        this.fromdate = "";
+        this.todate = "";
+        this.discountpercentage = 0;
+        this.change = "null";
+    }
+    //the list of products
+
+
+    function init() {
+        $("ul").hide();
+        $("#divaddtocart").hide();
+        $("#confirm").hide();
+
+
+    }
+
+    function loadData() {
+        //alert('inside loadData');
+
+        var chkd = document.form1.Voice.checked || document.form1.Video.checked || document.form1.Data.checked;
+        var choice;
+        var ch1 = document.form1.Voice.checked;
+        var ch2 = document.form1.Data.checked;
+        var ch3 = document.form1.Video.checked;
+        if (chkd) {
+
+            document.getElementById("bundles404").style.display = 'none';
+            document.getElementById("aLinkBundles").href = "#bundles";
+            document.getElementById("bundlesactive").style.display = 'block';
+            //   document.getElementById("aLinkBundles").style.backgroundColor = 'blue';
+            
+            
+
+            if ((ch1 && ch2) || (ch1 && ch3) || (ch2 && ch3) || (ch1 && ch2 && ch3))
+                //alert('bundles  ' + obj.bundles.length);
+            {
+                if (ch1 && ch2 && ch3)
+                    choice = "internet&voice&video";
+                else if (ch1 && ch3)
+                    choice = "voice&video";
+                else if (ch2 && ch3)
+                    choice = "internet&video";
+                else
+                    choice = "voice&internet";
+            }
+            else {
+                if (ch1)
+                    choice = "voice";
+                else if (ch2)
+                    choice = "internet";
+                else
+                    choice = "video";
+            }
+        }
+
+        else { }
+        alert(choice);
+        $.ajax({
+            type: 'GET',
+            url: '/Products/Json',
+            data: {
+
+                'state': 'usa',
+                'choice': choice
+            },
+            dataType: 'json',
+            success: function (data) {
+                alert("choice : " + choice);
+                var obj = jQuery.parseJSON(data);
+                alert(data);
+                //alert('products  ' + obj.products.length);
+           
+
+                if ((ch1 && ch2) || (ch1 && ch3) || (ch2 && ch3) || (ch1 && ch2 && ch3))
+                    //alert('bundles  ' + obj.Bundle_Details);
+                {
+                    //console.log('products  ' + obj.products.length);
+                    //console.log('bundles  ' + obj.bundles.length);
+                    alert('bundles length ' + obj.Bundle_Details.length);
+                    for (var i = 0; i < obj.Bundle_Details.length; i++) {
+                        var newdiv = document.createElement("div");
+                        var div1 = document.createElement("div");
+                        var div2 = document.createElement("div");
+                        newdiv.setAttribute("class", "row");
+                        div1.setAttribute("class", "col-md-6");
+                        div2.setAttribute("class", "col-md-6");
+                        newdiv.style.height = "auto"
+                        newdiv.style.width = "auto";
+                        var newb = document.createElement("button");
+                        newb.setAttribute("id", obj.Bundle_Details[i].Bundle_Id.value);
+                        newb.setAttribute("class", "btn btn-default");
+                        var newtext = document.createTextNode(obj.Bundle_Details[i].Bundle_Desc.value);
+                        var cartb = document.createElement("button");
+                        var carttext = document.createTextNode("Add To Cart");
+                        cartb.setAttribute("class", "btn btn-danger");
+                        //var cartremoveb = document.createElement("button");
+                        //var cartremovetext = document.createTextNode("-");
+                        //cartremoveb.setAttribute("id", i + 100);
+                        cartb.setAttribute("id", i);
+                        cartb.setAttribute("onclick", "getObject()");
+                        cartb.appendChild(carttext);
+                        newb.appendChild(newtext);
+                        div1.appendChild(newb);
+
+                        div2.appendChild(cartb);
+                        newdiv.appendChild(div1);
+                        newdiv.appendChild(div2);
+
+                        //newb.appendChild(checkbox);
+                        //newb.appendChild(newlink);
+                        //document.getElementById("prod").appendChild(newb);
+                        //document.getElementById("prod").appendChild(cartb);
+                        document.getElementById("prod").appendChild(newdiv);
+                    }
+                    $("ul").show();
+                    $("#divaddtocart").show();
+                    $("#confirm").show();
+                    //alert(obj.geonames[0].fcodeName);
+                    clicker_bundles(data);
+
+                }
+                else {
+
+                    //console.log('products  ' + obj.products.length);
+                    //console.log('bundles  ' + obj.bundles.length);
+                    alert(obj.Product_Details.length);
+                    console.log(obj.Product_Details.length);
+                    for (var i = 0; i < obj.Product_Details.length; i++) {
+                        var newdiv = document.createElement("div");
+                        var newb = document.createElement("button");
+                        newb.setAttribute("id", obj.Product_Details[i].Product_ID.value);
+                        newdiv.style.height = "100px"
+                        newdiv.style.width = "27%";
+                        newdiv.style.paddingTop = "30px";
+                        newdiv.style.paddingRight = "30px";
+                        var newtext = document.createTextNode(obj.Product_Details[i].Product_Name.value);
+                        newb.setAttribute("class", "btn btn-default");
+                        var cartb = document.createElement("button");
+                        var carttext = document.createTextNode("Add to Cart");
+                        cartb.setAttribute("class", "btn btn-danger");
+                        //var cartremoveb = document.createElement("button");
+                        //var cartremovetext = document.createTextNode("-");
+                        //cartremoveb.setAttribute("id", i + 100);
+                        cartb.setAttribute("id", i);
+                        cartb.setAttribute("onclick", "getObject()");
+                        cartb.appendChild(carttext);
+                        newb.appendChild(newtext);
+                        newdiv.appendChild(newb);
+                        newdiv.appendChild(cartb);
+                        //newb.appendChild(checkbox);
+                        //newb.appendChild(newlink);
+                        //document.getElementById("prod").appendChild(newb);
+                        //document.getElementById("prod").appendChild(cartb);
+                        document.getElementById("prod").appendChild(newdiv);
+                    }
+                    $("ul").show();
+                    $("#divaddtocart").show();
+                    $("#confirm").show();
+                    //alert(obj.geonames[0].fcodeName);
+                    clicker_products(data);
+
+                }
+            },
+            error: function () { alert('Error in receiving JSON'); }
+
+        });
+    }
+    function clicker_products(data) {
+        //alert("inside clicker");
+
+        $(document.body).on(
+                            'click',
+                            'button',
+                            function () {
+
+                                var obj = jQuery.parseJSON(data);
+
+
+                                var i = 0;
+                                for (i = 0; i < obj.Product_Details.length; i++) {
+
+
+                                    if (this.id == obj.Product_Details[i].Product_ID.value) {
+
+                                        $('#confirmorder').prop('disabled', false);
+                                        document.getElementById("productname").innerHTML = " Name : " + obj.Product_Details[i].Product_Name.value;
+                                        document.getElementById("productdesc").innerHTML = " Description : " + obj.Product_Details[i].Product_Description.value;
+                                        document.getElementById("productrate").innerHTML = " Cost : $ " + obj.Product_Details[i].Cost.value;
+
+                                        //document.getElementById("wikipedia").innerHTML = "<a href=\"" + obj.geonames[i].wikipedia + "\"> Wiki Link</a>";
+                                        //document.getElementById("divaddtocart").innerHTML = "<p>Add To Cart</p>";
+                                        //document.getElementById("addtocart");
+                                    }
+
+                                    if (this.id == i) {
+                                        //var flag = 0;
+                                        //for (var i in ProductsList) {
+                                        //    if (this.id == i.id)
+                                        //        flag = 1;
+                                        //}
+
+                                        ////var choice = confirm("Are you sure you want to add to cart ?");
+
+                                        ProductsList.push(obj.Product_Details[i]);
+                                        alert("Added to Cart");
+
+                                        //else {
+                                        //    alert('Duplicate Order !');
+                                        //}
+                                    }
+                                }
+
+
+                                //var j;
+                                //for (j = 0; j < ProductsList.length; j++)
+                                //    alert(ProductsList[j].product_name);
+                            });
+    }
+
+    function clicker_bundles(data) {
+        //alert("inside clicker");
+
+        $(document.body).on(
+                            'click',
+                            'button',
+                            function () {
+
+                                var obj = jQuery.parseJSON(data);
+
+
+                                var i = 0;
+                                for (i = 0; i < obj.Bundle_Details.length; i++) {
+
+
+                                    if (this.id == obj.Bundle_Details[i].Bundle_Id.value) {
+
+                                        $('#confirmorder').prop('disabled', false);
+                                        document.getElementById("bundlename").innerHTML = " Bundle ID : " + obj.Bundle_Details[i].Bundle_Id.value;
+                                        document.getElementById("bundledesc").innerHTML = " Description : " + obj.Bundle_Details[i].Bundle_Desc.value;
+                                        document.getElementById("bundlerate").innerHTML = " Cost : $ " + obj.Bundle_Details[i].Bundle_Cost.value;
+                                        //document.getElementById("addtocart")
+                                    }
+
+                                    if (this.id == i) {
+                                        BundlesList.push(obj.Bundle_Details[i]);
+                                        alert("Added to Cart");
+                                        //var flag = 0;
+                                        //for (var i = 0; i < BundlesList.length;i++) {
+                                        //    if (this.id == i.id)
+                                        //        flag = 1;
+                                        //}
+
+                                        //var choice = confirm("Are you sure you want to add to cart ?");
+                                        //if (flag == 0) {
+
+                                        //}
+                                        //else {
+                                        //    alert('Duplicate Order !');
+                                        //}
+                                    }
+                                }
+
+
+                                //var j;
+                                //for (j = 0; j < ProductsList.length; j++)
+                                //    alert(ProductsList[j].product_name);
+                            });
+    }
+
+    function ViewOrder() {
+        document.getElementById("shoppingCart").innerHTML = "";
+        if (ProductsList.length > 0) {
+            var j;
+            var newdiv = document.createElement("div");
+            //newdiv.setAttribute("class", "product_details");
+            for (j = 0; j < ProductsList.length; j++) {
+
+                var newspan = document.createElement("span");
+                var newtext = document.createTextNode("Product ID : " + ProductsList[j].Product_ID.value);
+                var newtext1 = document.createTextNode("    Product Name : " + ProductsList[j].Product_Name.value);
+                var newtext2 = document.createTextNode("    Description : " + ProductsList[j].Product_Description.value);
+                var newtext3 = document.createTextNode("    Discount : " + ProductsList[j].Discount.value);
+                var newtext4 = document.createTextNode("    Cost : " + ProductsList[j].Cost.value);
+                newspan.appendChild(newtext);
+                newspan.appendChild(newtext1);
+                newspan.appendChild(newtext2);
+                newspan.appendChild(newtext3);
+                newspan.appendChild(newtext4);
+                newdiv.appendChild(newspan);
+                //document.getElementById("newspan").innerHTML = "<br>";
+            }
+            // document.getElementById("newspan").insertAdjacentHTML="<br>"
+            document.getElementById("shoppingCart").appendChild(newdiv);
+            //alert(ProductsList[j].Product_Name.value);
+        }
+        else {
+            var j;
+            for (j = 0; j < BundlesList.length; j++)
+                alert(BundlesList[j].Bundle_Desc.value);
+        }
+    }
+
+
+    function SendOrderJson() {
+        var obj = new OrderForm();
+        var JsonObj = JSON.stringify(obj);
+        alert(JsonObj);
+        $.ajax({
+            type: 'POST',
+            url: 'SendOrder/Send',
+            contentType: 'json',
+            data: { JsonObj },
+            success: function () {
+                alert('ok');
+            },
+            error:
+                function () {
+                    alert('order submission error');
+                },
+        });
+        //dataType: 'json',
+        //alert("ok!");
+
+
+        //alert("not ok!");
+    }
+    //-----------------------------------
+    //debugging code starts
+    //-----------------------------------
+
+    /*        function Rootobject2()
+            {
+                this[0]=new Products();
+            }
+    
+            function Products()
+            {
+                this.product_id = 123;
+                this.product_name = "prod name";
+                this.product_desc = "prod desc";
+                this.cost = 1000;
+    
+            }
+            
+            function SampleJson()
+            {
+                alert("sample json");
+                var obj = new Products();
+                alert(JSON.stringify(obj));
+    
+            }*/
+    //-----------------------------------
+    //debugging code ends
+    //-----------------------------------
+
+
+    //--------------------------------------------------
+    //new code starts
+    //--------------------------------------------------
+    function RemoveFromCart() {
+        //get the product id from the user for the product to be removed
+
+        var idvalue = document.getElementById("IdTextBox").value;
+        if (ProductsList.length > 0) {
+            var i;
+            for (i = 0; i < ProductsList.length; i++) {
+                if (ProductsList[i].Product_ID.value == idvalue) {
+                    ProductsList.splice(i, 1);
+                }
+            }
+
+        }
+        else {
+            var i;
+            for (i = 0; i < BundlesList.length; i++) {
+                if (BundlesList[i].Bundle_Id.value == idvalue) {
+                    BundlesList.splice(i, 1);
+                }
+
+            }
+        }
+    }
+
+    function DisplayCart() {
+        if (ProductsList.length > 0) {
+            var i;
+            for (i = 0; i < ProductsList.length; i++) {
+                document.getElementById("prodid").appendChild("Product ID : " + ProductsList[i].Product_ID.value);
+                document.getElementById("prodid").appendChild("Product Name : " + ProductsList[i].Product_Name.value);
+                document.getElementById("prodid").appendChild("Description : " + ProductsList[i].Product_Description.value);
+                document.getElementById("prodid").appendChild("Discount : " + ProductsList[i].Discount.value);
+                document.getElementById("prodid").appendChild("Cost : $" + ProductsList[i].Cost.value);
+
+            }
+        }
+        else {
+            var i;
+            for (i = 0; i < BundlesList.length; i++) {
+                document.getElementById("bundleid").appendChild("Bundle ID : " + BundlesList[i].Bundle_Id.value);
+                document.getElementById("bundleid").appendChild("Description : " + BundlesList[i].Bundle_Desc.value);
+                document.getElementById("bundleid").appendChild("Discount : " + BundlesList[i].Bundle_Discount.value);
+                document.getElementById("bundleid").appendChild("Cost : $" + BundlesList[i].Bundle_Cost.value);
+            }
+        }
+    }
+
+    //--------------------------------------------------
+    //new code ends
+    //--------------------------------------------------
+    function getObject() {
+
+    }
+    function Hide() {
+        document.getElementById("services").style.display = 'none';
+        document.getElementById("services404").style.display = 'block';
+    }
+    function choice() {
+
+        var chkd = document.form1.Voice.checked || document.form1.Video.checked || document.form1.Data.checked;
+
+        if (chkd) {
+
+            document.getElementById("bundles404").style.display = 'none';
+            document.getElementById("aLinkBundles").href = "#bundles";
+            document.getElementById("bundlesactive").style.display = 'block';
+            //   document.getElementById("aLinkBundles").style.backgroundColor = 'blue';
+        }
+
+        else { }
+    }
+</script>

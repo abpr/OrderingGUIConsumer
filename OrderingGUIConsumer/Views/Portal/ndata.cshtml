@@ -1,0 +1,38 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    
+    <div class="content" id="address">
+        <form>
+            <div>
+                <div>
+                    <input type="text" name="bfirst_name" value="" id="first_name" placeholder="First Name" data-trigger="change" data-validation-minlength="1" data-type="name" data-required="true" data-error-message="Enter Your First Name" /><label for="first_name">First Name</label>
+                </div>
+
+                <div>
+                    <input type="text" name="blast_name" value="" id="last_name" placeholder="Last Name" data-trigger="change" data-validation-minlength="1" data-type="name" data-required="true" data-error-message="Enter Your Last Name" /><label for="last_name">Last Name</label>
+                </div>
+                <input type="text" name="bcountry" value="" id="bcountry" placeholder="Country" data-trigger="change" data-validation-minlength="1" data-type="text" data-required="true" data-error-message="Enter Your Billing Country" /><label for="country">Country</label>
+
+            </div>
+
+          
+            <div id="complete">
+                <input type="submit" id="submit" value="Confirm Order" name="Submit" />
+                <span class="sub">By selecting this button you agree to the purchase and subsequent payment for this order.</span>
+            </div>
+        </form>
+        
+    </div>
+</body>
+</html>
+

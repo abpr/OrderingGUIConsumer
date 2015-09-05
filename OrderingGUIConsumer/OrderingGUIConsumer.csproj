@@ -1,0 +1,538 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{66F98FE4-13E9-4B79-8E8C-45C4DB130EFF}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OrderingGUIConsumer</RootNamespace>
+    <AssemblyName>OrderingGUIConsumer</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\CustomerDetailsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PortalController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\SendOrderController.cs" />
+    <Compile Include="Controllers\SetSessionController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bundles.cs" />
+    <Compile Include="Models\DetailsModel.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\OrderForm.cs" />
+    <Compile Include="Models\PortalModel.cs" />
+    <Compile Include="Models\Products.cs" />
+    <Compile Include="Models\ProfilePull.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\centerVertical.css" />
+    <Content Include="Content\jsDatePick_ltr.min.css" />
+    <Content Include="Content\Payment.css" />
+    <Content Include="Content\scrolling-nav.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Home\img\3LmmFFV.png" />
+    <Content Include="Home\img\aqua_dayDown.gif" />
+    <Content Include="Home\img\aqua_dayNormal.gif" />
+    <Content Include="Home\img\aqua_dayOver.gif" />
+    <Content Include="Home\img\armygreen_dayDown.gif" />
+    <Content Include="Home\img\armygreen_dayNormal.gif" />
+    <Content Include="Home\img\armygreen_dayOver.gif" />
+    <Content Include="Home\img\bananasplit_dayDown.gif" />
+    <Content Include="Home\img\bananasplit_dayNormal.gif" />
+    <Content Include="Home\img\bananasplit_dayOver.gif" />
+    <Content Include="Home\img\beige_dayDown.gif" />
+    <Content Include="Home\img\beige_dayNormal.gif" />
+    <Content Include="Home\img\beige_dayOver.gif" />
+    <Content Include="Home\img\bg.jpg" />
+    <Content Include="Home\img\boxBottomLeftCorner.png" />
+    <Content Include="Home\img\boxBottomRightCorner.png" />
+    <Content Include="Home\img\boxSideWallPx.gif" />
+    <Content Include="Home\img\boxSideWallPx.png" />
+    <Content Include="Home\img\boxTopLeftCorner.png" />
+    <Content Include="Home\img\boxTopPx.gif" />
+    <Content Include="Home\img\boxTopPx.png" />
+    <Content Include="Home\img\boxTopRightCorner.png" />
+    <Content Include="Home\img\closeButton_down.gif" />
+    <Content Include="Home\img\closeButton_normal.gif" />
+    <Content Include="Home\img\closeButton_over.gif" />
+    <Content Include="Home\img\D2eQTim.png" />
+    <Content Include="Home\img\data.jpg" />
+    <Content Include="Home\img\deepblue_dayDown.gif" />
+    <Content Include="Home\img\deepblue_dayNormal.gif" />
+    <Content Include="Home\img\deepblue_dayOver.gif" />
+    <Content Include="Home\img\ewMjaHv.png" />
+    <Content Include="Home\img\greenish_dayDown.gif" />
+    <Content Include="Home\img\greenish_dayNormal.gif" />
+    <Content Include="Home\img\greenish_dayOver.gif" />
+    <Content Include="Home\img\icons.png" />
+    <Content Include="Home\img\Le0Vvgx.png" />
+    <Content Include="Home\img\lightgreen_dayDown.gif" />
+    <Content Include="Home\img\lightgreen_dayNormal.gif" />
+    <Content Include="Home\img\lightgreen_dayOver.gif" />
+    <Content Include="Home\img\lock.png" />
+    <Content Include="Home\img\monthBackward_down.gif" />
+    <Content Include="Home\img\monthBackward_normal.gif" />
+    <Content Include="Home\img\monthBackward_over.gif" />
+    <Content Include="Home\img\monthForward_down.gif" />
+    <Content Include="Home\img\monthForward_normal.gif" />
+    <Content Include="Home\img\monthForward_over.gif" />
+    <Content Include="Home\img\ocean_blue_dayDown.gif" />
+    <Content Include="Home\img\ocean_blue_dayNormal.gif" />
+    <Content Include="Home\img\ocean_blue_dayOver.gif" />
+    <Content Include="Home\img\orange_dayDown.gif" />
+    <Content Include="Home\img\orange_dayNormal.gif" />
+    <Content Include="Home\img\orange_dayOver.gif" />
+    <Content Include="Home\img\peppermint_dayDown.gif" />
+    <Content Include="Home\img\peppermint_dayNormal.gif" />
+    <Content Include="Home\img\peppermint_dayOver.gif" />
+    <Content Include="Home\img\pink_dayDown.gif" />
+    <Content Include="Home\img\pink_dayNormal.gif" />
+    <Content Include="Home\img\pink_dayOver.gif" />
+    <Content Include="Home\img\product.png" />
+    <Content Include="Home\img\Pu4e7AT.png" />
+    <Content Include="Home\img\purple_dayDown.gif" />
+    <Content Include="Home\img\purple_dayNormal.gif" />
+    <Content Include="Home\img\purple_dayOver.gif" />
+    <Content Include="Home\img\torqoise_dayDown.gif" />
+    <Content Include="Home\img\torqoise_dayNormal.gif" />
+    <Content Include="Home\img\torqoise_dayOver.gif" />
+    <Content Include="Home\img\video.jpg" />
+    <Content Include="Home\img\voice.jpg" />
+    <Content Include="Home\img\yearBackward_down.gif" />
+    <Content Include="Home\img\yearBackward_normal.gif" />
+    <Content Include="Home\img\yearBackward_over.gif" />
+    <Content Include="Home\img\yearForward_down.gif" />
+    <Content Include="Home\img\yearForward_normal.gif" />
+    <Content Include="Home\img\yearForward_over.gif" />
+    <Content Include="Home\img\yo.png" />
+    <Content Include="Home\img\Z5HVIOt.png" />
+    <Content Include="images\2015logowhite.png" />
+    <Content Include="images\3LmmFFV.png" />
+    <Content Include="images\aqua_dayDown.gif" />
+    <Content Include="images\aqua_dayNormal.gif" />
+    <Content Include="images\aqua_dayOver.gif" />
+    <Content Include="images\armygreen_dayDown.gif" />
+    <Content Include="images\armygreen_dayNormal.gif" />
+    <Content Include="images\armygreen_dayOver.gif" />
+    <Content Include="images\bananasplit_dayDown.gif" />
+    <Content Include="images\bananasplit_dayNormal.gif" />
+    <Content Include="images\bananasplit_dayOver.gif" />
+    <Content Include="images\beige_dayDown.gif" />
+    <Content Include="images\beige_dayNormal.gif" />
+    <Content Include="images\beige_dayOver.gif" />
+    <Content Include="images\bg.jpg" />
+    <Content Include="images\boxBottomLeftCorner.png" />
+    <Content Include="images\boxBottomRightCorner.png" />
+    <Content Include="images\boxSideWallPx.gif" />
+    <Content Include="images\boxSideWallPx.png" />
+    <Content Include="images\boxTopLeftCorner.png" />
+    <Content Include="images\boxTopPx.gif" />
+    <Content Include="images\boxTopPx.png" />
+    <Content Include="images\boxTopRightCorner.png" />
+    <Content Include="images\closeButton_down.gif" />
+    <Content Include="images\closeButton_normal.gif" />
+    <Content Include="images\closeButton_over.gif" />
+    <Content Include="images\D2eQTim.png" />
+    <Content Include="images\data.jpg" />
+    <Content Include="images\deepblue_dayDown.gif" />
+    <Content Include="images\deepblue_dayNormal.gif" />
+    <Content Include="images\deepblue_dayOver.gif" />
+    <Content Include="images\ewMjaHv.png" />
+    <Content Include="images\greenish_dayDown.gif" />
+    <Content Include="images\greenish_dayNormal.gif" />
+    <Content Include="images\greenish_dayOver.gif" />
+    <Content Include="images\icons.png" />
+    <Content Include="images\Le0Vvgx.png" />
+    <Content Include="images\lightgreen_dayDown.gif" />
+    <Content Include="images\lightgreen_dayNormal.gif" />
+    <Content Include="images\lightgreen_dayOver.gif" />
+    <Content Include="images\lock.png" />
+    <Content Include="images\monthBackward_down.gif" />
+    <Content Include="images\monthBackward_normal.gif" />
+    <Content Include="images\monthBackward_over.gif" />
+    <Content Include="images\monthForward_down.gif" />
+    <Content Include="images\monthForward_normal.gif" />
+    <Content Include="images\monthForward_over.gif" />
+    <Content Include="images\ocean_blue_dayDown.gif" />
+    <Content Include="images\ocean_blue_dayNormal.gif" />
+    <Content Include="images\ocean_blue_dayOver.gif" />
+    <Content Include="images\orange_dayDown.gif" />
+    <Content Include="images\orange_dayNormal.gif" />
+    <Content Include="images\orange_dayOver.gif" />
+    <Content Include="images\peppermint_dayDown.gif" />
+    <Content Include="images\peppermint_dayNormal.gif" />
+    <Content Include="images\peppermint_dayOver.gif" />
+    <Content Include="images\pink_dayDown.gif" />
+    <Content Include="images\pink_dayNormal.gif" />
+    <Content Include="images\pink_dayOver.gif" />
+    <Content Include="images\product.png" />
+    <Content Include="images\Pu4e7AT.png" />
+    <Content Include="images\purple_dayDown.gif" />
+    <Content Include="images\purple_dayNormal.gif" />
+    <Content Include="images\purple_dayOver.gif" />
+    <Content Include="images\torqoise_dayDown.gif" />
+    <Content Include="images\torqoise_dayNormal.gif" />
+    <Content Include="images\torqoise_dayOver.gif" />
+    <Content Include="images\video.jpg" />
+    <Content Include="images\voice.jpg" />
+    <Content Include="images\yearBackward_down.gif" />
+    <Content Include="images\yearBackward_normal.gif" />
+    <Content Include="images\yearBackward_over.gif" />
+    <Content Include="images\yearForward_down.gif" />
+    <Content Include="images\yearForward_normal.gif" />
+    <Content Include="images\yearForward_over.gif" />
+    <Content Include="images\yo.png" />
+    <Content Include="images\Z5HVIOt.png" />
+    <Content Include="img\3LmmFFV.png" />
+    <Content Include="img\aqua_dayDown.gif" />
+    <Content Include="img\aqua_dayNormal.gif" />
+    <Content Include="img\aqua_dayOver.gif" />
+    <Content Include="img\armygreen_dayDown.gif" />
+    <Content Include="img\armygreen_dayNormal.gif" />
+    <Content Include="img\armygreen_dayOver.gif" />
+    <Content Include="img\bananasplit_dayDown.gif" />
+    <Content Include="img\bananasplit_dayNormal.gif" />
+    <Content Include="img\bananasplit_dayOver.gif" />
+    <Content Include="img\beige_dayDown.gif" />
+    <Content Include="img\beige_dayNormal.gif" />
+    <Content Include="img\beige_dayOver.gif" />
+    <Content Include="img\bg.jpg" />
+    <Content Include="img\boxBottomLeftCorner.png" />
+    <Content Include="img\boxBottomRightCorner.png" />
+    <Content Include="img\boxSideWallPx.gif" />
+    <Content Include="img\boxSideWallPx.png" />
+    <Content Include="img\boxTopLeftCorner.png" />
+    <Content Include="img\boxTopPx.gif" />
+    <Content Include="img\boxTopPx.png" />
+    <Content Include="img\boxTopRightCorner.png" />
+    <Content Include="img\closeButton_down.gif" />
+    <Content Include="img\closeButton_normal.gif" />
+    <Content Include="img\closeButton_over.gif" />
+    <Content Include="img\D2eQTim.png" />
+    <Content Include="img\data.jpg" />
+    <Content Include="img\deepblue_dayDown.gif" />
+    <Content Include="img\deepblue_dayNormal.gif" />
+    <Content Include="img\deepblue_dayOver.gif" />
+    <Content Include="img\ewMjaHv.png" />
+    <Content Include="img\greenish_dayDown.gif" />
+    <Content Include="img\greenish_dayNormal.gif" />
+    <Content Include="img\greenish_dayOver.gif" />
+    <Content Include="img\icons.png" />
+    <Content Include="img\Le0Vvgx.png" />
+    <Content Include="img\lightgreen_dayDown.gif" />
+    <Content Include="img\lightgreen_dayNormal.gif" />
+    <Content Include="img\lightgreen_dayOver.gif" />
+    <Content Include="img\lock.png" />
+    <Content Include="img\monthBackward_down.gif" />
+    <Content Include="img\monthBackward_normal.gif" />
+    <Content Include="img\monthBackward_over.gif" />
+    <Content Include="img\monthForward_down.gif" />
+    <Content Include="img\monthForward_normal.gif" />
+    <Content Include="img\monthForward_over.gif" />
+    <Content Include="img\ocean_blue_dayDown.gif" />
+    <Content Include="img\ocean_blue_dayNormal.gif" />
+    <Content Include="img\ocean_blue_dayOver.gif" />
+    <Content Include="img\orange_dayDown.gif" />
+    <Content Include="img\orange_dayNormal.gif" />
+    <Content Include="img\orange_dayOver.gif" />
+    <Content Include="img\peppermint_dayDown.gif" />
+    <Content Include="img\peppermint_dayNormal.gif" />
+    <Content Include="img\peppermint_dayOver.gif" />
+    <Content Include="img\pink_dayDown.gif" />
+    <Content Include="img\pink_dayNormal.gif" />
+    <Content Include="img\pink_dayOver.gif" />
+    <Content Include="img\product.png" />
+    <Content Include="img\Pu4e7AT.png" />
+    <Content Include="img\purple_dayDown.gif" />
+    <Content Include="img\purple_dayNormal.gif" />
+    <Content Include="img\purple_dayOver.gif" />
+    <Content Include="img\torqoise_dayDown.gif" />
+    <Content Include="img\torqoise_dayNormal.gif" />
+    <Content Include="img\torqoise_dayOver.gif" />
+    <Content Include="img\video.jpg" />
+    <Content Include="img\voice.jpg" />
+    <Content Include="img\yearBackward_down.gif" />
+    <Content Include="img\yearBackward_normal.gif" />
+    <Content Include="img\yearBackward_over.gif" />
+    <Content Include="img\yearForward_down.gif" />
+    <Content Include="img\yearForward_normal.gif" />
+    <Content Include="img\yearForward_over.gif" />
+    <Content Include="img\yo.png" />
+    <Content Include="img\Z5HVIOt.png" />
+    <Content Include="PCATurls\PCATUrls.txt" />
+    <Content Include="Scripts\billship.js" />
+    <Content Include="Scripts\Calendar date.js" />
+    <Content Include="Scripts\InsertDetails.js" />
+    <Content Include="Scripts\jquery-2.0.3.min.js" />
+    <Content Include="Scripts\jquery.1.4.2.js" />
+    <Content Include="Scripts\jquery.easing.min.js" />
+    <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jsDatePick.jquery.min.1.3.js" />
+    <Content Include="Scripts\login.js" />
+    <Content Include="Scripts\mobile validate.js" />
+    <Content Include="Scripts\scrolling-nav.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="jsonfile\geonames.json" />
+    <Content Include="jsonfile\OneNote Table Of Contents.onetoc2" />
+    <Content Include="jsonfile\Bundles.json" />
+    <Content Include="jsonfile\Products.json" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\Tension.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Login\ValidateCredentials.cshtml" />
+    <Content Include="Views\Home\LoginStartPage.cshtml" />
+    <Content Include="Views\CustomerDetails\Details.cshtml" />
+    <Content Include="Views\Services\chooseservice.cshtml" />
+    <Content Include="Views\Bundles\choosebundle.cshtml" />
+    <Content Include="Views\Portal\Add.cshtml" />
+    <Content Include="Views\Portal\Index.cshtml" />
+    <Content Include="Views\Portal\ndata.cshtml" />
+    <Content Include="Views\Portal\PortalView.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\SendOrder\" />
+    <Folder Include="Views\SetSession\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>4148</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:4148/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

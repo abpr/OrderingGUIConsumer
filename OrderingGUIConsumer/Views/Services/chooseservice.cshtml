@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Choose Service";
+}
+<div class="container">
+    <div class="row" style="height:100%">
+
+
+        <div style="height:auto;width:auto">
+            
+            <div class="col-md-4"><img src="~/images/voice.jpg" /></div>
+            <div class="col-md-4"><img src="~/images/data.jpg" /></div>
+            <div class="col-md-4"><img src="~/images/video.jpg" /></div>
+                    
+        </div>
+        <div style="height:auto;width:auto">
+            <form name="form1" action="" method="get" align="center">
+                <div class="col-md-4">
+                    <input type="checkbox" name="Voice" value="Voice" class="chkbox">
+                </div>
+                <div class="col-md-4">
+                    <input type="checkbox" name="Data" value="Data" class="chkbox">
+                </div>
+                <div class="col-md-4">
+                    <input type="checkbox" name="Video" value="Video" class="chkbox">
+                </div>
+                <div class="submitButton">
+                    <input type="button" value="Submit" name="Submit" onclick="loadData()" class="btn btn-danger">
+                </div>
+            </form>
+        </div>
+
+
+
+            </div>
+</div>
+

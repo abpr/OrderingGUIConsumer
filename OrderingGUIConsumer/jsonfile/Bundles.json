@@ -1,0 +1,16 @@
+{
+  "Bundle": {
+    "Bundle_Id": {
+      "value": "b2015"
+    },
+    "Bundle_Desc": {
+      "value": "fios internet50+fios digital voice+fiostv custom tv"
+    },
+    "Bundle_Discount": {
+      "value": "20"
+    },
+    "Bundle_Cost": {
+      "value": "240"
+    }
+  }
+}

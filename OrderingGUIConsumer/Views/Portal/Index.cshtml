@@ -1,0 +1,397 @@
+﻿@model OrderingGUIConsumer.Models.PortalModel
+
+<html lang='en'>
+    <head>
+        <title>
+            Payment Credentials
+        </title>
+        <link rel="stylesheet" type="text/css" media="all" href="~/Content/jsDatePick_ltr.min.css">
+
+        <!--
+            OR if you want to use the calendar in a right-to-left website
+            just use the other CSS file instead and don't forget to switch g_jsDatePickDirectionality variable to "rtl"!
+
+            <link rel="stylesheet" type="text/css" media="all" href="jsDatePick_ltr.css" />
+        -->
+        <script type="text/javascript" src="~/Scripts/jquery.1.4.2.js"></script>
+    <script type="text/javascript" src="~/Scripts/jsDatePick.jquery.min.1.3.js"></script>
+    <!--
+        After you copied those 2 lines of code , make sure you take also the files into the same folder :-)
+        Next step will be to set the appropriate statement to "start-up" the calendar on the needed HTML element.
+
+        The first example of Javascript snippet is for the most basic use , as a popup calendar
+        for a text field input.
+    -->
+    <script type="text/javascript">
+	window.onload = function(){
+		new JsDatePick({
+			useMode:2,
+			target:"inputField",
+			dateFormat:"%d-%M-%Y"
+			/*selectedDate:{				This is an example of what the full configuration offers.
+				day:5,						For full documentation about these settings please see the full version of the code.
+				month:9,
+				year:2006
+			},
+			yearsRange:[1978,2020],
+			limitToToday:false,
+			cellColorScheme:"beige",
+			dateFormat:"%m-%d-%Y",
+			imgPath:"img/",
+			weekStartDay:1*/
+		});
+	};
+    </script>
+   
+    @*<link rel="stylesheet" type="text/css" href="/Content/style.css" />*@
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="~/Scripts/billship.js"></script>
+    <script src="~/Scripts/Tension.js"></script>
+   
+   
+    
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600' rel='stylesheet' type='text/css'>
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script> 
+        <script type="text/javascript">
+            function getData()
+            {
+                //bfirst_name.Text = M;
+                TextBox2.Text = Model.id.ToString();
+                TextBox3.Text = Model.salary.ToString();
+                TextBox4.Text = Model.address;
+
+            }
+        
+           
+        </script>
+</head>
+
+<body>    
+    <!--  Start here -->    
+    <div id="wrap">
+
+        <div id="grid">
+            <div class="column column1">
+                <div class="step" id="step1">
+                    <div class="number">
+                        <span>1</span>
+                    </div>
+                    <div class="title">
+                        <h3>Email Address</h3>
+                    </div>
+                    <div class="modify">
+                        <i class="fa fa-plus-circle"></i>
+                    </div>
+                </div>
+                <div class="content" id="emailphone">
+                    <form name="form1 " class="go-right">
+
+                        @*@using (Html.BeginForm("Index", "Portal", FormMethod.Post, new { @class = "go-right" }))
+                            {
+                                <div>
+                                    @Html.TextBoxFor(m => m.Email)
+                                    <label>Email</label>
+                                </div>
+
+                                <div>
+                                    @Html.TextBoxFor(m => m.Phone)
+                                    <label>Phone</label>
+                                </div>
+
+
+                            }*@
+
+
+
+                        <div class="test">
+                            <input type="text" name="mobile" value="" id="mobile" placeholder="Mobile No" data-trigger="change" data-validation-minlength="1" data-type="name" data-required="true" data-error-message="Enter Your Mobile Number" /><label for="last_name">Mobile No</label>
+                        </div>
+
+                    </form>
+
+                    @*<form class="go-right">
+                        <div>*@
+                    @*<input type="text" name="emails" value="" id="email-address" placeholder="Email Address" data-trigger="change"
+                        data-validation-minlength="1" data-type="email" data-required="true" data-error-message="Enter a valid email address." />*@
+
+                    @*<input type="text" name="telephone" value="" id="telephone" placeholder="Phone(555)-555-5555" data-trigger="change" data-validation-minlength="1" data-type="number" data-required="true" data-error-message="Enter Your Telephone Number" />*@
+                    @*<label for="telephone">Telephone</label>*@
+
+                    @*</div>
+
+                        </form>*@
+
+                </div>
+                <div class="step" id="step2">
+                    <div class="number">
+                        <span>2</span>
+                    </div>
+                    <div class="title">
+                        <h3>Billing Information</h3>
+                    </div>
+                </div>
+                <div class="content" id="address">
+                    <form class="go-right">
+                        <div class="test">
+                            <input type="text" name="bfirst_name" value="@Model.Billfname" id="bfirst_name" placeholder="First Name" data-trigger="change" data-validation-minlength="1" data-type="name" data-required="true" data-error-message="Enter Your First Name" /><label for="first_name">First Name</label>
+
+                        </div>
+
+                        <div class="test">
+                            <input type="text" name="blast_name" value="@Model.Billlname" id="blast_name" placeholder="Last Name" data-trigger="change" data-validation-minlength="1" data-type="name" data-required="true" data-error-message="Enter Your Last Name" /><label for="last_name">Last Name</label>
+                        </div>
+
+
+                        <div class="test">
+                            <input type="text" name="bstreet" value="@Model.Billstreet" id="bstreet" placeholder="Street" data-trigger="change" data-validation-minlength="1" data-type="text" data-required="true" data-error-message="Enter Your Billing Street" /><label for="Street">Street</label>
+                        </div>
+                        <div class="test">
+                            <input type="text" name="bzip" value="@Model.Billzipcode" id="bzip" placeholder="Zipcode" data-trigger="change" data-validation-minlength="1" data-type="text" data-required="true" data-error-message="Enter Your Billing Zipcode" /><label for="Zipcode">Zipcode</label>
+                        </div>
+                        <div class="test">
+                            <input type="text" name="bcity" value="@Model.Billcity" id="bcity" placeholder="City" data-trigger="change" data-validation-minlength="1" data-type="text" data-required="true" data-error-message="Enter Your Billing City" /><label for="City">City</label>
+                        </div>
+                        <div class="test">
+                            <input type="text" name="bstate" value="@Model.Billstate" id="bstate" placeholder="State" data-trigger="change" data-validation-minlength="1" data-type="text" data-required="true" data-error-message="Enter Your Billing State" /><label for="state">State</label>
+                        </div>
+                        <div class="test">
+                            <input type="text" name="bstateid" value="@Model.Billstateid" id="bstateid" placeholder="Stateid" data-trigger="change" data-validation-minlength="1" data-type="text" data-required="true" data-error-message="Enter Your Billing StateID" /><label for="stateid">State ID</label>
+                        </div>
+
+                        <div class="test">
+                            <input type="text" name="bcountry" value="@Model.Billcountry" id="bcountry" placeholder="Country" data-trigger="change" data-validation-minlength="1" data-type="text" data-required="true" data-error-message="Enter Your Billing Country" /><label for="country">Country</label>
+
+                        </div>
+                        <div class="test">
+                            <input type="text" name="bdob" value="@Model.Billdob" id="bdob" placeholder="Date Of Birth" data-trigger="change" data-validation-minlength="1" data-type="text" data-required="true" data-error-message="Enter Your Billing DOB" /><label for="DOB">Date Of Birth</label>
+                        </div>
+                        <div class="test">
+
+                            <input type="text" name="email" value="@Model.Email" id="emailID" placeholder="Email Address" data-trigger="change" data-validation-minlength="1" data-type="name" data-error-message="Enter Your Email Address" /><label for="email">Email ID</label>
+
+                        </div>
+                        <div class="test">
+                            
+                            <input type="checkbox" id="chkbox" style="float: left; margin-top: 5px;" />
+                            <div style="margin-left: 5px;">Same As Shipping Address</div>
+
+                            </div>
+                    </form>
+
+                </div>
+            </div>
+            <div class="column column2">
+                <div class="step" id="step3">
+                    <div class="number">
+                        <span>3</span>
+                    </div>
+                    <div class="title">
+                        <h3>Shipping Address</h3>
+                    </div>
+                    <div class="modify">
+                        <i class="fa fa-plus-circle"></i>
+                    </div>
+                </div>
+                <div class="content" id="address">
+                    <form class="go-right">
+                        <div class="test">
+                            <input type="text" name="sfirst_name" value="" id="sfirst_name" placeholder="First Name" data-trigger="change" data-validation-minlength="1" data-type="name" data-required="true" data-error-message="Enter Your First Name" /><label for="first_name">First Name</label>
+                        </div>
+
+                        <div class="test">
+                            <input type="text" name="slast_name" value="" id="slast_name" placeholder="Last Name" data-trigger="change" data-validation-minlength="1" data-type="name" data-required="true" data-error-message="Enter Your Last Name" /><label for="last_name">Last Name</label>
+                        </div>
+                        <div class="test">
+                            <input type="text" name="sstreet" value="" id="sstreet" placeholder="Street" data-trigger="change" data-validation-minlength="1" data-type="text" data-required="true" data-error-message="Enter Your Shipping Street" /><label for="street">Street</label>
+                        </div>
+                        <div class="test">
+                            <input type="text" name="szip" value="" id="szip" placeholder="Zipcode" data-trigger="change" data-validation-minlength="1" data-type="text" data-required="true" data-error-message="Enter Your Shipping Zipcode" /><label for="zipcode">Zipcode</label>
+                        </div>
+                        <div class="test">
+                            <input type="text" name="scity" value="" id="scity" placeholder="City" data-trigger="change" data-validation-minlength="1" data-type="text" data-required="true" data-error-message="Enter Your Shipping City" /><label for="city">City</label>
+                        </div>
+
+                        <div class="test">
+                            <input type="text" name="sstate" value="" id="sstate" placeholder="State" data-trigger="change" data-validation-minlength="1" data-type="text" data-required="true" data-error-message="Enter Your Shipping State" /><label for="state">State</label>
+                        </div>
+                        <div class="test">
+                            <input type="text" name="sstateid" value="" id="sstateid" placeholder="Stateid" data-trigger="change" data-validation-minlength="1" data-type="text" data-required="true" data-error-message="Enter Your Shipping StateID" /><label for="stateid">State ID</label>
+                        </div>
+                        <div class="test">
+                            <input type="text" name="scountry" value="" id="scountry" placeholder="Country" data-trigger="change" data-validation-minlength="1" data-type="text" data-required="true" data-error-message="Enter Your Shipping Country" /><label for="country">Country</label>
+
+                        </div>
+
+
+                        <div class="test">
+                            <input type="text" name="sdob" value="" id="sdob" placeholder="Date Of Birth" data-trigger="change" data-validation-minlength="1" data-type="text" data-required="true" data-error-message="Enter Your Shipping DOB" /><label for="DOB">Date Of Birth</label>
+                        </div>
+                        <div class="test">
+
+                        </div>
+                    </form>
+
+                </div>
+                <div class="step" id="step4">
+                    <div class="number">
+                        <span>4</span>
+                    </div>
+                    <div class="title">
+                        <h3>Date OF Delivery</h3>
+                    </div>
+                    <div class="modify">
+                        <i class="fa fa-plus-circle"></i>
+                    </div>
+                </div>
+                <div class="content" id="payment">
+                    @*<form class="left">*@
+                    <form class="go-right">
+
+                        <span style="position: relative;left: 5%;">
+                            <input type="text" size="12" id="inputField" globalnumber="133">
+                            <div class="JsDatePickBox" style="z-index: 3; position: absolute; top: 18px; left: 0px; display: none;" id="datepicker">
+                                <div class="boxLeftWall">
+                                    <div class="leftTopCorner"></div>
+                                    <div class="leftWall"></div>
+                                    <div class="leftBottomCorner"></div>
+                                </div>
+                                <div class="boxMain">
+                                    <div class="boxMainInner">
+                                        <div class="controlsBar" globalnumber="133">
+                                            <div class="monthForwardButton" globalnumber="133"></div>
+                                            <div class="monthBackwardButton" globalnumber="133"></div>
+                                            <div class="yearForwardButton" globalnumber="133"></div>
+                                            <div class="yearBackwardButton" globalnumber="133"></div>
+                                            <div class="controlsBarText">August, 2015</div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div class="tooltip"></div>
+                                        <div class="weekDaysRow">
+                                            <div class="weekDay">Mon</div>
+                                            <div class="weekDay">Tue</div>
+                                            <div class="weekDay">Wed</div>
+                                            <div class="weekDay">Thu</div>
+                                            <div class="weekDay">Fri</div>
+                                            <div class="weekDay">Sat</div>
+                                            <div class="weekDay" style="margin-right: 0px;">Sun</div>
+                                        </div>
+                                        <div class="boxMainCellsContainer">
+                                            <div class="skipDay"></div>
+                                            <div class="skipDay"></div>
+                                            <div class="skipDay"></div>
+                                            <div class="skipDay"></div>
+                                            <div class="skipDay"></div>
+                                            <div globalnumber="133" class="dayNormal" style="background: url(images/ocean_blue_dayNormal.gif) 0% 0% no-repeat;">1</div>
+                                            <div globalnumber="133" class="dayNormal" style="margin-right: 0px; background: url(img/ocean_blue_dayNormal.gif) 0% 0% no-repeat;">2</div>
+                                            <div globalnumber="133" class="dayNormal" style="background: url(images/armygreen_dayNormal.gif) 0% 0% no-repeat;">3</div>
+                                            <div globalnumber="133" class="dayNormal" style="background: url(images/ocean_blue_dayNormal.gif) 0% 0% no-repeat;">4</div>
+                                            <div globalnumber="133" class="dayNormal" style="background: url(images/ocean_blue_dayNormal.gif) 0% 0% no-repeat;">5</div>
+                                            <div globalnumber="133" class="dayNormal" style="background: url(images/ocean_blue_dayNormal.gif) 0% 0% no-repeat;">6</div>
+                                            <div globalnumber="133" class="dayNormal" style="background: url(images/ocean_blue_dayNormal.gif) 0% 0% no-repeat;">7</div>
+                                            <div globalnumber="133" class="dayNormal" style="background: url(images/ocean_blue_dayNormal.gif) 0% 0% no-repeat;">8</div>
+                                            <div globalnumber="133" class="dayNormal" style="margin-right: 0px; background: url(img/ocean_blue_dayNormal.gif) 0% 0% no-repeat;">9</div>
+                                            <div globalnumber="133" class="dayNormal" style="background: url(images/ocean_blue_dayNormal.gif) 0% 0% no-repeat;">10</div>
+                                            <div globalnumber="133" class="dayNormal" style="background: url(images/ocean_blue_dayNormal.gif) 0% 0% no-repeat;">11</div>
+                                            <div globalnumber="133" class="dayNormal" style="background: url(images/ocean_blue_dayNormal.gif) 0% 0% no-repeat;">12</div>
+                                            <div globalnumber="133" class="dayNormal" style="background: url(images/ocean_blue_dayNormal.gif) 0% 0% no-repeat;">13</div>
+                                            <div globalnumber="133" class="dayNormal" style="background: url(images/ocean_blue_dayNormal.gif) 0% 0% no-repeat;">14</div>
+                                            <div globalnumber="133" class="dayNormal" style="background: url(images/ocean_blue_dayNormal.gif) 0% 0% no-repeat;">15</div>
+                                            <div globalnumber="133" class="dayNormal" style="margin-right: 0px; background: url(img/ocean_blue_dayNormal.gif) 0% 0% no-repeat;">16</div>
+                                            <div globalnumber="133" class="dayNormal" style="background: url(images/ocean_blue_dayNormal.gif) 0% 0% no-repeat;">17</div>
+                                            <div globalnumber="133" class="dayNormal" style="background: url(images/ocean_blue_dayNormal.gif) 0% 0% no-repeat;">18</div>
+                                            <div globalnumber="133" class="dayNormal" style="background: url(images/ocean_blue_dayNormal.gif) 0% 0% no-repeat;">19</div>
+                                            <div globalnumber="133" class="dayNormal" style="background: url(images/ocean_blue_dayNormal.gif) 0% 0% no-repeat;">20</div>
+                                            <div globalnumber="133" class="dayNormal" style="background: url(images/ocean_blue_dayNormal.gif) 0% 0% no-repeat;">21</div>
+                                            <div globalnumber="133" class="dayNormal" style="background: url(images/ocean_blue_dayNormal.gif) 0% 0% no-repeat;">22</div>
+                                            <div globalnumber="133" class="dayNormal" style="margin-right: 0px; background: url(images/ocean_blue_dayNormal.gif) 0% 0% no-repeat;">23</div>
+                                            <div globalnumber="133" istoday="1" class="dayNormalToday" style="background: url(images/ocean_blue_dayNormal.gif) 0% 0% no-repeat;">24</div>
+                                            <div globalnumber="133" class="dayNormal" style="background: url(images/ocean_blue_dayNormal.gif) 0% 0% no-repeat;">25</div>
+                                            <div globalnumber="133" class="dayNormal" style="background: url(images/ocean_blue_dayNormal.gif) 0% 0% no-repeat;">26</div>
+                                            <div globalnumber="133" class="dayNormal" style="background: url(images/ocean_blue_dayNormal.gif) 0% 0% no-repeat;">27</div>
+                                            <div globalnumber="133" class="dayNormal" style="background: url(images/ocean_blue_dayNormal.gif) 0% 0% no-repeat;">28</div>
+                                            <div globalnumber="133" class="dayNormal" style="background: url(images/ocean_blue_dayNormal.gif) 0% 0% no-repeat;">29</div>
+                                            <div globalnumber="133" class="dayNormal" style="margin-right: 0px; background: url(images/ocean_blue_dayNormal.gif) 0% 0% no-repeat;">30</div>
+                                            <div globalnumber="133" class="dayNormal" style="background: url(images/ocean_blue_dayNormal.gif) 0% 0% no-repeat;">31</div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                                <div class="boxRightWall">
+                                    <div class="rightTopCorner"></div>
+                                    <div class="rightWall"></div>
+                                    <div class="rightBottomCorner"></div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="jsDatePickCloseButton" globalnumber="133"></div>
+                                <div class="topWall"></div>
+                                <div class="bottomWall"></div>
+                            </div>
+                        </span>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="column column3">
+            <div class="step" id="step5">
+                <div class="number">
+                    <span>5</span>
+                </div>
+                <div class="title">
+                    <h3>Finalize Order</h3>
+                </div>
+                <div class="modify">
+                    <i class="fa fa-plus-circle"></i>
+                </div>
+            </div>
+            <div class="content" id="final_products">
+                <div class="left" id="ordered">
+                    <div  id="shoppingCart" class="products">
+                        @*<div class="product_details">
+                            <span class="product_name">Product Name</span>
+                            <span class="quantity">Quantity Number</span>
+                            <span class="price">Product Price</span>
+                        </div>*@
+                    </div>
+                    <div class="final">
+                        <span class="title">Total <span id="calculated_total">Sum Total Price</span></span>
+                    </div>
+                </div>
+                <div class="right" id="reviewed">
+                    <div class="billing">
+                        <span class="title">Billing:</span>
+                        <div class="address_reviewed">
+                            <span class="name">Customer Name</span>
+                            <span class="state">Customer State</span>
+
+                            <span class="phone">Customer Contact</span>
+                        </div>
+                    </div>
+                    <div class="shipping">
+                        <span class="title">Shipping:</span>
+                        <div class="address_reviewed">
+                            <span class="name">Customer Name</span>
+                            <span class="state">Customer State</span>
+
+                            <span class="phone">Customer Contact</span>
+                        </div>
+                    </div>
+                    <div class="payment">
+                        <span class="title">Payment:</span>
+                        <div class="payment_reviewed">
+                            <span class="method">Selected Method</span>
+                            <span class="number_hidden">xxxx-xxxx-xxxx-1111</span>
+                        </div>
+                    </div>
+                    <div id="complete">
+                        <input type="button" id="submit" value="Confirm Order" name="Submit" onclick="ValidateUser()">
+                        <span class="sub">By selecting this button you agree to the purchase and subsequent payment for this order.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
