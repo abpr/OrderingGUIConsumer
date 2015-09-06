@@ -345,17 +345,23 @@
                     <i class="fa fa-plus-circle"></i>
                 </div>
             </div>
+            @*For center horrizontal and vertical, position: relative; transform: translate(-50%, -50%); left: 50%;top: 50%;*@
+
             <div class="content" id="final_products">
-                <div class="left" id="ordered">
+                <div id="complete" style=" padding-top: 2px">
+                    <input type="button" id="submit" value="Confirm Order" style="" name="Submit" onclick="ValidateUser()">
+                    <span class="sub" style="padding-top: 2px; padding-bottom: 2px">By selecting this button you agree to the purchase and subsequent payment for this order.</span>
+                </div>
+                @*<div class="left" id="ordered">
                     <div  id="shoppingCart" class="products">
-                        @*<div class="product_details">
+                        <div class="product_details">
                             <span class="product_name">Product Name</span>
                             <span class="quantity">Quantity Number</span>
                             <span class="price">Product Price</span>
-                        </div>*@
+                        </div>
                     </div>
                     <div class="final">
-                        <span class="title">Total <span id="calculated_total">Sum Total Price</span></span>
+                        <span class="title"><span id="calculated_total">Total Price</span></span>
                     </div>
                 </div>
                 <div class="right" id="reviewed">
@@ -383,15 +389,10 @@
                             <span class="method">Selected Method</span>
                             <span class="number_hidden">xxxx-xxxx-xxxx-1111</span>
                         </div>
-                    </div>
-                    <div id="complete">
-                        <input type="button" id="submit" value="Confirm Order" name="Submit" onclick="ValidateUser()">
-                        <span class="sub">By selecting this button you agree to the purchase and subsequent payment for this order.</span>
-                    </div>
+                    </div>*@
                 </div>
             </div>
         </div>
-    </div>
 </body>
 </html>
 
