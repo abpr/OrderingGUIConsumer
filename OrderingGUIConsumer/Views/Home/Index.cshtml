@@ -2,7 +2,7 @@
 @model OrderingGUIConsumer.Models.PortalModel
 
 <nav class="navbar navbar-default navbar-fixed-top" style="background-color:crimson" role="navigation" >
-    <div id="img" style="float:left">
+    <div id="img" style="float:left;padding-left:10px">
         <img src="~/images/2015logowhite.png" width="50" height="50" >
     </div>
     <div class="container">
@@ -36,8 +36,8 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li id="agentName">
-                    <a class="page-scroll"><font color="white">@ViewBag.agentName</font></a>
+                <li id="agentName">		                    
+                    <a class="page-scroll"><div id="divAgentName" style="color: white"></div></a>
                 </li>
             </ul>
         </div>
@@ -92,7 +92,7 @@
                         <p id="bundledesc"></p>
                         <p id="bundlerate"></p>
                     </div>
-                    <div class="col-md-4" >
+                    <div class="col-md-4" style="height:auto;width:auto">
                         <input type="button" name="ViewOrder" onclick="ViewOrder()" value="View Order">
                         <div id="shoppingCart">
 
@@ -102,9 +102,9 @@
                     </div>
 
                 </div>
-                <div id="confirm">
+                @*<div id="confirm">
                     <input type="button" id="confirmorder" value="Confirm Order" onclick="SendOrderJson()"/>
-                </div>
+                </div>*@
             </div>
         </div>
     </div>
@@ -126,15 +126,14 @@
 
 <script type="text/javascript">
 
-    //$("#sessionDiv").load("Session")
-
+    $(document).ready(function () {
+        $("#divAgentName").text("Welcome " + localStorage.getItem("userid"));
+    });
 
     function init() {
         $("ul").hide();
         $("#divaddtocart").hide();
         $("#confirm").hide();
-
-
     }
 
 
@@ -247,7 +246,7 @@
     }
 
     function loadData() {
-        //alert('inside loadData');
+        console.log('inside loadData');
 
         var chkd = document.form1.Voice.checked || document.form1.Video.checked || document.form1.Data.checked;
         var choice;
@@ -297,9 +296,9 @@
             },
             dataType: 'json',
             success: function (data) {
-                alert("choice : " + choice);
+                alert("You have chosen : " + choice);
                 var obj = jQuery.parseJSON(data);
-                alert(data);
+                console.log(data);
                 //alert('products  ' + obj.products.length);
            
 
@@ -308,7 +307,7 @@
                 {
                     //console.log('products  ' + obj.products.length);
                     //console.log('bundles  ' + obj.bundles.length);
-                    alert('bundles length ' + obj.Bundle_Details.length);
+                    alert("There are " + obj.Bundle_Details.length + " bundles of your interest");
                     for (var i = 0; i < obj.Bundle_Details.length; i++) {
                         var newdiv = document.createElement("div");
                         var div1 = document.createElement("div");
@@ -355,7 +354,7 @@
 
                     //console.log('products  ' + obj.products.length);
                     //console.log('bundles  ' + obj.bundles.length);
-                    alert(obj.Product_Details.length);
+                    alert("There are " + obj.Product_Details.length + " products of your interest");
                     console.log(obj.Product_Details.length);
                     for (var i = 0; i < obj.Product_Details.length; i++) {
                         var newdiv = document.createElement("div");
@@ -543,11 +542,11 @@
             contentType: 'json',
             data: { JsonObj },
             success: function () {
-                alert('ok');
+                alert('Order submitted successfully');
             },
             error:
                 function () {
-                    alert('order submission error');
+                    alert('Order submission error');
                 },
         });
         //dataType: 'json',

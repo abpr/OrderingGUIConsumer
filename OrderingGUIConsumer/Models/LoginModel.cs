@@ -14,7 +14,7 @@ namespace OrderingGUIConsumer.Models
         public string isUserValid(string strUser, string strPwd)
         {
             OleDbConnection connect = new OleDbConnection();
-
+            return "Home/Index";
             connect.ConnectionString = "Provider=OraOLEDB.Oracle;Data Source=TR9001-PC11;User ID=system1;password=123";
 
             connect.Open();

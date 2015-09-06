@@ -38,6 +38,7 @@ namespace OrderingGUIConsumer.Models
         public PortalModel GetUsers()
         {
             PortalModel obj = new PortalModel();
+            return obj;
             OleDbConnection connect = new OleDbConnection();
 
             connect.ConnectionString = "Provider=OraOLEDB.Oracle;Data Source=TR9001-PC11;User ID=system1;password=123";

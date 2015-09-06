@@ -23,12 +23,13 @@
             if (data == "Invalid Username or Password")
                 alert(data);
             else {
-                $(function () {
-                    $.post('/SetSession/SetVariable',
-                           { key: "agentName", value: userid }, function (data) {
-                               alert("Success " + data.success);
-                           });
-                });
+                localStorage.setItem("userid", userid);
+                //$(function () {
+                //    $.post('/SetSession/SetVariable',
+                //           { key: "agentName", value: userid }, function (data) {
+                //               alert("Success " + data.success);
+                //           });
+                //});
             }
             window.location.href = data;
             //$.ajax({
