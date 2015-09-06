@@ -259,8 +259,6 @@
             document.getElementById("aLinkBundles").href = "#bundles";
             document.getElementById("bundlesactive").style.display = 'block';
             //   document.getElementById("aLinkBundles").style.backgroundColor = 'blue';
-            
-            
 
             if ((ch1 && ch2) || (ch1 && ch3) || (ch2 && ch3) || (ch1 && ch2 && ch3))
                 //alert('bundles  ' + obj.bundles.length);
@@ -395,6 +393,8 @@
             error: function () { alert('Error in receiving JSON'); }
 
         });
+
+        $("#aLinkBundles").click();
     }
     function clicker_products(data) {
         //alert("inside clicker");
