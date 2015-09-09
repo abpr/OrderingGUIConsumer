@@ -126,8 +126,14 @@
 
 <script type="text/javascript">
 
+    var monthNames = ["jan", "feb", "mar", "apr", "may", "jun",
+    "jul", "aug", "sep", "oct", "nov", "Dec"
+    ];
+
     $(document).ready(function () {
         $("#divAgentName").text("Welcome " + localStorage.getItem("userid"));
+        //var date = new Date();
+        //alert(date.getDate() + '-' + monthNames[date.getMonth() + 1] + '-' + date.getFullYear());
     });
 
     function init() {
@@ -181,7 +187,8 @@
     }
 
     function Orderdetails() {
-        this.dateofbooking = "10-sep-2015";
+        var date = new Date();
+        this.dateofbooking = date.getDate() + '-' + monthNames[date.getMonth() + 1] + '-' + date.getFullYear();
         this.duedate = $('#inputField').val();
         this.services = new Array();
         if (ProductsList.length > 0)
@@ -191,7 +198,7 @@
         }
         else
         {
-            for (var i = 0; i < BundlesList; i++)
+            for (var i = 0; i < BundlesList.length; i++) //Triple Play bug rectified here!
                 this.services[i] = new Service(i,0);
         }
 
