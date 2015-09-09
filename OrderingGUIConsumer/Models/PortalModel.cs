@@ -22,7 +22,7 @@ namespace OrderingGUIConsumer.Models
         public string Billstate { get; set; }
         public int Billstateid { get; set; }
         public string Billcountry { get; set; }
-        public DateTime Billdob { get; set; }
+        public string Billdob { get; set; }
         public string Shipfname { get; set; }
         public string Shiplname { get; set; }
         public string Shipstreet { get; set; }
@@ -55,7 +55,7 @@ namespace OrderingGUIConsumer.Models
                 obj.Billstate = reader["strstate"].ToString();
                 obj.Billstateid = Convert.ToInt32(reader["stateid"]);
                 obj.Billcountry = reader["strcountry"].ToString();
-                obj.Billdob = Convert.ToDateTime(reader["dob"]);
+                obj.Billdob = Convert.ToDateTime(reader["dob"]).ToString("dd-mmm-yyyy");
                 obj.Email = reader["email"].ToString();
             }
             return obj;

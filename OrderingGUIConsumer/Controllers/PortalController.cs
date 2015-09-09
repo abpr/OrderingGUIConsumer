@@ -34,7 +34,8 @@ namespace OrderingGUIConsumer.Controllers
             newmv.Billstate = bstate;
             newmv.Billstateid = Convert.ToInt32(bstateid);
             newmv.Billcountry = bcountry;
-            newmv.Billdob = Convert.ToDateTime(bdob);
+            //newmv.Billdob = Convert.ToDateTime(bdob);
+            newmv.Billdob = bdob;
             newmv.Shipfname = sfname;
             newmv.Shiplname = slname;
             newmv.Shipstreet = sstr;
