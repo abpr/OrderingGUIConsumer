@@ -86,7 +86,7 @@
         });
         ////validate user
         setTimeout(SubmitOrder, 2000);
-        alert("Wait for 5 seconds");
+        console.log("Wait for 5 seconds");
             function SubmitOrder() {
             $.ajax({
                 type: 'POST',

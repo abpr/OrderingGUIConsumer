@@ -44,7 +44,7 @@ namespace OrderingGUIConsumer.Controllers
             newmv.Shipstate = sstate;
             newmv.Shipstateid = Convert.ToInt32(sstateid);
             newmv.Shipcountry = scountry;
-            newmv.Shipdob = Convert.ToDateTime(sdob);
+            newmv.Shipdob = sdob;
             newmv.Bookdate = DateTime.Today;
             newmv.Duedate = Convert.ToDateTime(duedate);
             return obj.AddUsers(newmv);            

@@ -188,7 +188,7 @@
 
     function Orderdetails() {
         var date = new Date();
-        this.dateofbooking = date.getDate() + '-' + monthNames[date.getMonth() + 1] + '-' + date.getFullYear();
+        this.dateofbooking = date.getDate() + '-' + monthNames[date.getMonth()] + '-' + date.getFullYear();
         this.duedate = $('#inputField').val();
         this.services = new Array();
         if (ProductsList.length > 0)
@@ -210,7 +210,7 @@
         if (condition == 1)
         {
             this.servicecode = ProductsList[i].Product_ID.value;
-            this.servicename = ProductsList[i].Product_Description.value;
+            this.servicename = ProductsList[i].Product_Name.value;
             this.quantity = new Quantity();
         }
         else
@@ -290,7 +290,7 @@
         }
 
         else { }
-        alert(choice);
+        console.log(choice);
         $.ajax({
             type: 'GET',
             url: '/Products/Json',
@@ -301,7 +301,7 @@
             },
             dataType: 'json',
             success: function (data) {
-                alert("You have chosen : " + choice);
+                console.log("You have chosen : " + choice);
                 var obj = jQuery.parseJSON(data);
                 console.log(data);
                 //alert('products  ' + obj.products.length);
@@ -542,7 +542,7 @@
     function SendOrderJson() {
         var obj = new OrderForm();
         var JsonObj = JSON.stringify(obj);
-        alert(JsonObj);
+        console.log(JsonObj);
         $.ajax({
             type: 'POST',
             url: 'SendOrder/Send',
